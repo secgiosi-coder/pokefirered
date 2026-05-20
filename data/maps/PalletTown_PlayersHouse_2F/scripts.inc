@@ -5,7 +5,30 @@ PalletTown_PlayersHouse_2F_MapScripts::
 
 PalletTown_PlayersHouse_2F_OnTransition::
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 0, PalletTown_PlayersHouse_2F_EventScript_SetRespawn
+	goto_if_set FLAG_SYS_POKEDEX_GET, PalletTown_PlayersHouse_2F_IntroDone
+	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 0, PalletTown_PlayersHouse_2F_EventScript_BacciIntro
+PalletTown_PlayersHouse_2F_IntroDone:
 	end
+
+PalletTown_PlayersHouse_2F_EventScript_BacciIntro::
+	lockall
+	fadescreen FADE_TO_BLACK
+	msgbox PalletTown_PlayersHouse_2F_Text_Zzz, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_CheOreSono, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_Tardissimo, MSGBOX_DEFAULT
+	fadescreen FADE_FROM_BLACK
+	setflag FLAG_SYS_POKEDEX_GET
+	releaseall
+	return
+
+PalletTown_PlayersHouse_2F_Text_Zzz:
+	.string "Zzz... zzz...$"
+
+PalletTown_PlayersHouse_2F_Text_CheOreSono:
+	.string "Che ore sono?$"
+
+PalletTown_PlayersHouse_2F_Text_Tardissimo:
+	.string "Oh cavolo, è tardissimo!$"
 
 PalletTown_PlayersHouse_2F_EventScript_SetRespawn::
 	setrespawn HEAL_LOCATION_PALLET_TOWN
