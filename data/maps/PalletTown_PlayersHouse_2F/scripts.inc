@@ -14,20 +14,11 @@ PalletTown_PlayersHouse_2F_OnFrame::
 PalletTown_PlayersHouse_2F_EventScript_BacciIntro::
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 2
 	lockall
-	msgbox PalletTown_PlayersHouse_2F_Text_Zzz, MSGBOX_DEFAULT
-	msgbox PalletTown_PlayersHouse_2F_Text_CheOreSono, MSGBOX_DEFAULT
-	msgbox PalletTown_PlayersHouse_2F_Text_Tardissimo, MSGBOX_DEFAULT
-	fadescreen FADE_FROM_BLACK
-	releaseall
-setvar VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 2
-	lockall
 	fadescreen FADE_TO_BLACK
-	waitfade
 	msgbox PalletTown_PlayersHouse_2F_Text_Zzz, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_2F_Text_CheOreSono, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_2F_Text_Tardissimo, MSGBOX_DEFAULT
 	fadescreen FADE_FROM_BLACK
-	waitfade
 	releaseall
 	end
 
