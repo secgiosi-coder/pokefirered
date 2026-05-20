@@ -1,25 +1,35 @@
 PalletTown_PlayersHouse_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_PlayersHouse_2F_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PalletTown_PlayersHouse_2F_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, PalletTown_PlayersHouse_2F_OnFrame
 	.byte 0
 
 PalletTown_PlayersHouse_2F_OnTransition::
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 0, PalletTown_PlayersHouse_2F_EventScript_SetRespawn
-	goto_if_set FLAG_SYS_POKEDEX_GET, PalletTown_PlayersHouse_2F_IntroDone
-	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 0, PalletTown_PlayersHouse_2F_EventScript_BacciIntro
-PalletTown_PlayersHouse_2F_IntroDone:
 	end
+PalletTown_PlayersHouse_2F_OnFrame::
+	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 1, PalletTown_PlayersHouse_2F_EventScript_BacciIntro
+	.2byte 0
 
 PalletTown_PlayersHouse_2F_EventScript_BacciIntro::
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 2
 	lockall
-	fadescreen FADE_TO_BLACK
 	msgbox PalletTown_PlayersHouse_2F_Text_Zzz, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_2F_Text_CheOreSono, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_2F_Text_Tardissimo, MSGBOX_DEFAULT
 	fadescreen FADE_FROM_BLACK
-	setflag FLAG_SYS_POKEDEX_GET
 	releaseall
-	return
+setvar VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 2
+	lockall
+	fadescreen FADE_TO_BLACK
+	waitfade
+	msgbox PalletTown_PlayersHouse_2F_Text_Zzz, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_CheOreSono, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_Tardissimo, MSGBOX_DEFAULT
+	fadescreen FADE_FROM_BLACK
+	waitfade
+	releaseall
+	end
 
 PalletTown_PlayersHouse_2F_Text_Zzz:
 	.string "Zzz... zzz...$"

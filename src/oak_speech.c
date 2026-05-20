@@ -1100,9 +1100,10 @@ static void Task_OakSpeech_Init(u8 taskId)
 {
         StringCopy(gSaveBlock2Ptr->playerName, (const u8 *)("BACCI"));
         StringCopy(gSaveBlock1Ptr->rivalName, (const u8 *)("COBELLI"));
+	BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
         gSaveBlock2Ptr->playerGender = MALE;
 
-        gTasks[taskId].func = Task_OakSpeech_FreeResources;
+BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);        gTasks[taskId].func = Task_OakSpeech_FreeResources;
         return;
     s16 *data = gTasks[taskId].data;
     u32 size = 0;
@@ -1130,7 +1131,7 @@ static void Task_OakSpeech_Init(u8 taskId)
 #define OakSpeechPrintMessage(str, speed) ({                                                                                                                 \
     DrawDialogueFrame(WIN_INTRO_TEXTBOX, FALSE);                                                                                                             \
     if (str != gStringVar4)                                                                                                                                  \
-    {                                                                                                                                                        \
+    {                                                                                                                                                       \
         StringExpandPlaceholders(gStringVar4, str);                                                                                                          \
         AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY); \
     }                                                                                                                                                        \
