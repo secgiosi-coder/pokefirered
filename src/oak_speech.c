@@ -1098,6 +1098,12 @@ static void Task_PikachuIntro_Clear(u8 taskId)
 
 static void Task_OakSpeech_Init(u8 taskId)
 {
+        StringCopy(gSaveBlock2Ptr->playerName, (const u8 *)("BACCI"));
+        StringCopy(gSaveBlock1Ptr->rivalName, (const u8 *)("COBELLI"));
+        gSaveBlock2Ptr->playerGender = MALE;
+
+        gTasks[taskId].func = Task_OakSpeech_FreeResources;
+        return;
     s16 *data = gTasks[taskId].data;
     u32 size = 0;
     if (tTimer != 0)

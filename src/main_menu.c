@@ -17,6 +17,7 @@
 #include "text_window.h"
 #include "text_window_graphics.h"
 #include "constants/songs.h"
+void CB2_NewGame(void);
 
 enum MainMenuType
 {
